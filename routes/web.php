@@ -13,6 +13,9 @@ use App\Http\Controllers\Form\TestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function() {
+    return view('welcome');
+});
 
 Route::get('/usuarios', [TestController::class, 'listAllUsers'])->name('users.listAll');
 Route::get('/usuarios/novo', [TestController::class, 'formAddUser'])->name('users.novo');
