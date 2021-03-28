@@ -34,7 +34,7 @@ class TestController extends Controller
         $request->validate([
             'name' => 'required|min:2',
             'email' => 'required|email',
-            'password' => 'required|password'
+       /*      'password' => 'required|password' */
         ]);
 
         $user = new User();
