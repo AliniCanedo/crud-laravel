@@ -14,8 +14,11 @@ use App\Http\Controllers\Form\TestController;
 |
 */
 
-Route::get('/usuarios', [TestController::class, 'listAllUsers']);
+Route::get('/usuarios', [TestController::class, 'listAllUsers'])->name('users.listAll');
 Route::get('/usuarios/novo', [TestController::class, 'formAddUser']);
+Route::get('/usuarios/editar/{user}', [TestController::class, 'formEditUser']);
 Route::get('/usuarios/{user}', [TestController::class, 'listUsers']);
+Route::post('/usuarios/store', [TestController::class, 'storeUser'])->name('users.store');
+Route::put('/usuarios/edit/{user}', [TestController::class, 'editUser'])->name('users.edit');
 
-Route::get('/usuarios/store', [TestController::class, 'storeUser']);
+
