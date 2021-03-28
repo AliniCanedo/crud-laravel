@@ -26,9 +26,11 @@
                 <th scope="row">{{ $user->name}}</th>
                 <th>{{ $user->email}}</th>
                 <th class="d-flex">
-                    <a href="">Ver Usuário</a>
-                    <form action="" method="post">
-                        <input type="hidden" name="user" value="">
+                    <a href="{{route('user', ['user' => $user-> id])}}">Ver Usuário</a>
+                    <form action="{{route('users.destroy', ['user' => $user->id])}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" name="user" value="{{$user->id}}">
                         <input type="submit" value="Remover" class="btn btn-danger mx-5">
                     </form>
                 </th>
@@ -36,6 +38,14 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="{{route('users.novo')}}" class="btn btn-primary">Adicionar um novo usuário</a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

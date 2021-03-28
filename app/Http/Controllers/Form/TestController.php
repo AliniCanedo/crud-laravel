@@ -31,6 +31,12 @@ class TestController extends Controller
 
     public function storeUser(Request $request)
     {
+        $request->validate([
+            'name' => 'required|min:2',
+            'email' => 'required|email',
+            'password' => 'required|password'
+        ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -55,6 +61,12 @@ class TestController extends Controller
             $user->password = Hash::make($request->password);
         }
         $user->save();
+        return redirect()->route('users.listAll');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
         return redirect()->route('users.listAll');
     }
 }

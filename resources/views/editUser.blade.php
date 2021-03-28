@@ -11,7 +11,7 @@
 <body>
     <form action="{{route('users.edit', ['user' => $user-> id])}}" method="post">
         @csrf
-        @method('PUT')
+        @method('patch')
         <label for="">Nome do usuário:</label>
         <input type="text" name="name" value="{{$user->name}}">
 

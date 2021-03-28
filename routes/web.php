@@ -15,10 +15,11 @@ use App\Http\Controllers\Form\TestController;
 */
 
 Route::get('/usuarios', [TestController::class, 'listAllUsers'])->name('users.listAll');
-Route::get('/usuarios/novo', [TestController::class, 'formAddUser']);
+Route::get('/usuarios/novo', [TestController::class, 'formAddUser'])->name('users.novo');
 Route::get('/usuarios/editar/{user}', [TestController::class, 'formEditUser']);
-Route::get('/usuarios/{user}', [TestController::class, 'listUsers']);
+Route::get('/usuarios/{user}', [TestController::class, 'listUsers'])->name('user');;
 Route::post('/usuarios/store', [TestController::class, 'storeUser'])->name('users.store');
-Route::put('/usuarios/edit/{user}', [TestController::class, 'editUser'])->name('users.edit');
+Route::patch('/usuarios/edit/{user}', [TestController::class, 'editUser'])->name('users.edit');
 
 
+Route::delete('/usuarios/destroy/{user}', [TestController::class, 'destroy'])->name('users.destroy');
